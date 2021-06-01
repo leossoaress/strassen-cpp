@@ -118,7 +118,7 @@ Matrix Matrix::concatenate(Matrix *a, Matrix *b, Matrix *c, Matrix *d) {
 
 Matrix Matrix::strassen(Matrix *m1, Matrix *m2) {
     
-    if (m1->rows == 32) {
+    if (m1->rows <= 32) {
         Matrix result = Matrix(1, 1);
         return m1->multiply(m2);
     }

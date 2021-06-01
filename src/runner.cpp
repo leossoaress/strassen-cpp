@@ -25,7 +25,7 @@ void Runner::execute() {
     microseconds ms = std::chrono::duration_cast<microseconds>(t1 - t0);
     this->bruteForce.push_back(ms);
     
-    std::cout << "Naive k:" << i << "  M" << pow(2,i) << "x" << pow(2,i) << std::endl;
+    std::cout << "Naive k:" << i << "  " << pow(2,i) << "x" << pow(2,i) << std::endl;
     std::cout << "Time total: " << ms.count() << std::endl;
     std::cout << "Time avarage: " <<  ms.count() / r << " microseconds" << std::endl << std::endl;
 
@@ -39,9 +39,11 @@ void Runner::execute() {
     ms = std::chrono::duration_cast<microseconds>(t1 - t0);
     this->strassen.push_back(ms);
 
-    std::cout << "Strassen k:" << i << "  M" << pow(2,i) << "x" << pow(2,i) << std::endl;
+    std::cout << "Strassen k:" << i << "  " << pow(2,i) << "x" << pow(2,i) << std::endl;
     std::cout << "Time total: " << ms.count() << std::endl;
     std::cout << "Time avarage: " <<  ms.count() / r << " microseconds" << std::endl << std::endl;
+
+    this->matrices.clear();
   }
 
   std::ofstream outFile("./output/output.csv");
@@ -58,36 +60,20 @@ void Runner::execute() {
   plot("set terminal png size 1024,768");
   plot("set output 'output/output.png'");
 
-  plot("set title \"Comparativo Strassen x Definição Simples\" ");
+  plot("set title \"Comparativo Strassen x Naive\" ");
   plot("set xlabel \"Valor de k, ou seja, o tamanho do matriz (no units)\" ");
   plot("set ylabel \"Tempo médio para cada multiplicação (us)\" ");
 
   plot("set xtics 5,1," + std::to_string(this->kmax));
-
-  plot("set multiplot layout 1, 2");
-  plot("set lmargin at 0");
-  plot("set rmargin at .5");
-  plot("plot 'output/output.csv' using 1:2 with lines");
-  plot("set lmargin at .5");
-  plot("set lmargin at 1");
-  plot("plot 'output/output.csv' using 1:3 with lines");
-  plot("unset multiplot");
+  plot("plot 'output/output.csv' using 1:2 with lines t\"strassen\", 'output/output.csv' using 1:3 with lines t\"naive\"");
 
   plot("set terminal qt");
-  plot("set title \"Comparativo Strassen x Definição Simples\" ");
+  plot("set title \"Comparativo Strassen x Naive\" ");
   plot("set xlabel \"Valor de k, ou seja, o tamanho do matriz (no units)\" ");
   plot("set ylabel \"Tempo médio para cada multiplicação (us)\" ");
 
   plot("set xtics 5,1," + std::to_string(this->kmax));
-
-  plot("set multiplot layout 1, 2");
-  plot("set lmargin at 0");
-  plot("set rmargin at .5");
-  plot("plot 'output/output.csv' using 1:2 with lines");
-  plot("set lmargin at .5");
-  plot("set lmargin at 1");
-  plot("plot 'output/output.csv' using 1:3 with lines");
-  plot("unset multiplot");
+  plot("plot 'output/output.csv' using 1:2 with lines t\"strassen\", 'output/output.csv' using 1:3 with lines t\"naive\"");
 }
 
 
