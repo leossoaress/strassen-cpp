@@ -32,7 +32,7 @@ make
 
 Esta aplicação gera uma imagem com dois gráficos comparativos entre as abordagem, marcando o tempo em microsegundos, como mostra a figura abaixo. Também é gerado um arquivo do tipo csv para outros fins.
 
-
+![image info](./output/output.png)
 
 ## Extra
 
