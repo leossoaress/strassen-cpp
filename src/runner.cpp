@@ -89,8 +89,39 @@ void Runner::execute() {
 
 void Runner::test() {
     
-  Matrix a = Matrix(256, 256, this->min, this->max);
-  Matrix b = Matrix(256, 256, this->min, this->max);
+  Matrix a = Matrix(256,256, 10, 50);
+  Matrix b = Matrix(256,256, 10, 50);
+
+  // std::cout << a << std::endl;
+  // std::cout << b << std::endl;
+
+
+  // Matrix c = a.split(2,2,2,2);
+  // std::cout << c << std::endl;
+
+  // Matrix d = a.split(0,2,2,2);
+  // Matrix e = a.split(2,2,0,2);
+  // Matrix f = a.split(2,2,2,2);
+  
+
+  // std::chrono::steady_clock::time_point begin = std::chrono::steady_clock::now();  
+  // Matrix d = a * b;
+  // std::chrono::steady_clock::time_point end = std::chrono::steady_clock::now();  
+  // std::cout << "Time difference = " << std::chrono::duration_cast<std::chrono::microseconds>(end - begin).count() << "[µs]" << std::endl;
+  
+  // begin = std::chrono::steady_clock::now();  
+  // Matrix e = Matrix::strassen(a,b);
+  // end = std::chrono::steady_clock::now();  
+  // std::cout << "Time difference = " << std::chrono::duration_cast<std::chrono::microseconds>(end - begin).count() << "[µs]" << std::endl;
+  
+
+  // std::cout << c << std::endl;
+  // std::cout << d << std::endl;
+  // std::cout << e << std::endl;
+  // std::cout << f << std::endl;
+  // std::cout << d << std::endl;
+
+  // std::cout << a[0][0] << std::endl;
 
   // a.print();
   // std::cout << std::endl;

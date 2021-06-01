@@ -12,9 +12,13 @@ class Matrix {
 public:
     
   unsigned int rows = 0;
-  
   unsigned int columns = 0;
-  
+
+  unsigned int r = 0;
+  unsigned int c = 0;
+
+  int **arr;
+
   std::vector< std::vector<int> > data;
   
   Matrix(void);
@@ -22,6 +26,8 @@ public:
   ~Matrix(void);
   
   Matrix(unsigned int row, unsigned int column);
+
+  Matrix(unsigned int row, unsigned int column, int value);
   
   Matrix(unsigned int row, unsigned int column, unsigned int min, unsigned int max);
   
@@ -39,11 +45,15 @@ public:
   
   void print();
 
-  Matrix operator + (const Matrix & b);
+  int* const operator[]( int const x );
 
-  Matrix operator - (const Matrix & b);
+  Matrix operator + ( Matrix & b );
+
+  Matrix operator - ( Matrix & b );
 
   Matrix operator * (const Matrix & b);
+
+  friend std::ostream& operator<<(std::ostream& os, const Matrix& m);
   
 };
 
