@@ -10,8 +10,15 @@ Está implementação foi desenvolvida para avaliação na disciplina de Estrutu
 
 Para execução do código os seguinte comandos devem ser executados:
 
+### Build
+
 ````
 docker build -t strassen-multiplication:latest .
+````
+
+### Running
+
+````
 docker run -v $(pwd)/output:/usr/src/app/output -it --rm --name strassen-running-app strassen-multiplication:latest
 ````
 
@@ -30,13 +37,13 @@ make
 
 ## Resultados
 
-Esta aplicação gera uma imagem com dois gráficos comparativos entre as abordagem, marcando o tempo em microsegundos, como mostra a figura abaixo. Também é gerado um arquivo do tipo csv para outros fins.
+Esta aplicação gera um gráfico comparativos entre as abordagem: naive e strassen, marcando o tempo em microsegundos, como mostra a figura abaixo. Também é gerado um arquivo do tipo csv para outros fins.
 
 ![image info](./output/output.png)
 
 ## Discussão
 
-Como mostrado no gráfico apresentado na seção anterior, o algoritmo de Strassen para mulitplicação de matrizes leva mais tempo para executar cada operação do que o algoritmo ingênuo, isso de dá ao fato da implementação não ser a mais eficiente possível.
+Como mostrado no gráfico apresentado na seção anterior, o algoritmo de Strassen para mulitplicação de matrizes leva mais tempo até um certo momento de k, onde o strassen começa a se sobresair. Vale salientar que foi utilizado um cross point = 32, ou seja, o ponto final da recursão de strassen acontece quando as matrizes chegam 32x32, nesse momento é feio a multiplicação da forma ingênua.
 
 ## Extras
 
