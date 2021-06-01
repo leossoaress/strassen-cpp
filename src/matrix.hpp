@@ -24,20 +24,22 @@ public:
   Matrix(unsigned int row, unsigned int column);
   
   Matrix(unsigned int row, unsigned int column, unsigned int min, unsigned int max);
+    
+  static Matrix concatenate(Matrix a, Matrix b, Matrix c, Matrix d);
   
-  Matrix multiply(Matrix* b);
-  
-  Matrix sum(Matrix* b);
-  
-  Matrix sub(Matrix* b);
-  
-  static Matrix concatenate(Matrix* a, Matrix* b, Matrix* c, Matrix* d);
-  
-  static Matrix strassen(Matrix* a, Matrix* b);
+  static Matrix strassen(Matrix a, Matrix b);
   
   Matrix split(unsigned int x0, unsigned int xsize, unsigned int y0, unsigned int ysize);
   
-  void print();
+  std::vector<int> operator[]( int const x );
+
+  Matrix operator + ( Matrix & b );
+
+  Matrix operator - ( Matrix & b );
+
+  Matrix operator * (const Matrix & b);
+
+  friend std::ostream& operator<<(std::ostream& os, const Matrix& m);
   
 };
 
