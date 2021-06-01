@@ -32,11 +32,6 @@ make
 
 Foi criado um código semelhante na linguagem de [Matlab](https://www.mathworks.com/products/matlab.html), o código pode ser encontrado neste [repositório](https://google.com).
 
-````
-make
-./build/application
-````
-
 ## Autores
 
 * **Leoberto Soares**- [leossoaress](https://github.com/leossoaress)
