@@ -1,7 +1,7 @@
 #include "gnuplot.hpp"
 
 Gnuplot::Gnuplot() {
-  this->gnuplotpipe = popen("Gnuplot -persist", "w");
+  this->gnuplotpipe = popen("gnuplot -persist", "w");
   if(!this->gnuplotpipe) std::cerr << "Gnuplot Not found!";
 }
 

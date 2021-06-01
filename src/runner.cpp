@@ -24,7 +24,7 @@ void Runner::execute() {
     Clock::time_point t1 = Clock::now();
     microseconds ms = std::chrono::duration_cast<microseconds>(t1 - t0);
 
-    std::cout << "BruteForce -> k: " << i << " - " << ms.count() / r << " miliseconds" << std::endl;
+    std::cout << "BruteForce -> k: " << i << " - " << ms.count() / r << " microseconds" << std::endl;
     this->bruteForce.push_back(ms);
 
     t0 = Clock::now();
@@ -37,11 +37,11 @@ void Runner::execute() {
     ms = std::chrono::duration_cast<microseconds>(t1 - t0);
     this->strassen.push_back(ms);
 
-    std::cout << "Strassen -> k: " << i << " - " << ms.count() / r << " miliseconds" << std::endl;
+    std::cout << "Strassen -> k: " << i << " - " << ms.count() / r << " microseconds" << std::endl;
   }
 
   std::ofstream outFile("./output/output.csv");
-  // outFile << "k,strassen,standard\n";
+  outFile << "k,strassen,standard\n";
 
   for( int i = 0; i < this->strassen.size(); ++i) {
     outFile << std::to_string(i+5) + " " + std::to_string(this->strassen[i].count()) + " " + std::to_string(this->bruteForce[i].count()) + "\n";

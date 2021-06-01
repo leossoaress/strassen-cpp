@@ -12,7 +12,7 @@ Para execução do código os seguinte comandos devem ser executados:
 
 ````
 docker build -t strassen-multiplication:latest .
-docker run -it --rm --name strassen-running-app strassen-multiplicatio:latest
+docker run -v $(pwd)/output:/usr/src/app/output -it --rm --name strassen-running-app strassen-multiplication:latest
 ````
 
 ## Libs
@@ -34,11 +34,15 @@ Esta aplicação gera uma imagem com dois gráficos comparativos entre as aborda
 
 ![image info](./output/output.png)
 
-## Extra
+## Discussão
+
+Como mostrado no gráfico apresentado na seção anterior, o algoritmo de Strassen para mulitplicação de matrizes leva mais tempo para executar cada operação do que o algoritmo ingênuo, isso de dá ao fato da implementação não ser a mais eficiente possível.
+
+## Extras
 
 Foi criado um código semelhante na linguagem [Matlab](https://www.mathworks.com/products/matlab.html), o código pode ser encontrado neste [repositório](https://google.com).
 
-## Autores
+## Autor
 
 * **Leoberto Soares**- [leossoaress](https://github.com/leossoaress)
 
