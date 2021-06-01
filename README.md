@@ -28,6 +28,12 @@ make
 ./build/application
 ````
 
+## Resultados
+
+Esta aplicação gera uma imagem com dois gráficos comparativos entre as abordagem, marcando o tempo em microsegundos, como mostra a figura abaixo. Também é gerado um arquivo do tipo csv para outros fins.
+
+
+
 ## Extra
 
 Foi criado um código semelhante na linguagem [Matlab](https://www.mathworks.com/products/matlab.html), o código pode ser encontrado neste [repositório](https://google.com).
