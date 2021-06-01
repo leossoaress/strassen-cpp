@@ -118,10 +118,9 @@ Matrix Matrix::concatenate(Matrix *a, Matrix *b, Matrix *c, Matrix *d) {
 
 Matrix Matrix::strassen(Matrix *m1, Matrix *m2) {
     
-    if (m1->rows == 1 && m2->rows) {
+    if (m1->rows == 32) {
         Matrix result = Matrix(1, 1);
-        result.data[0][0] = m1->data[0][0] * m2->data[0][0];
-        return result;
+        return m1->multiply(m2);
     }
     
     unsigned int n = m1->rows / 2;
