@@ -11,6 +11,7 @@ WORKDIR /usr/src/app
 RUN apt-get update -y
 RUN apt-get install build-essential manpages-dev gnuplot -y
 
+RUN make clean
 RUN make
 
 RUN chmod +x ./build/application

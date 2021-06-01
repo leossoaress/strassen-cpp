@@ -24,20 +24,20 @@ void Runner::execute() {
     Clock::time_point t1 = Clock::now();
     microseconds ms = std::chrono::duration_cast<microseconds>(t1 - t0);
 
-    std::cout << "BruteForce -> k: " << i << " - " << ms.count() / r << " miliseconds" << std::endl;
+    std::cout << "BruteForce -> k: " << i << " - " << ms.count() / r << " microseconds" << std::endl;
     this->bruteForce.push_back(ms);
 
     t0 = Clock::now();
 
     for (int l = 0; l < this->r / 2; l += 2) {
-      Matrix::strassen(this->matrices[l], this->matrices[l + 1]);
+      Matrix::strassen(*this->matrices[l], *this->matrices[l + 1]);
     }
 
     t1 = Clock::now();
     ms = std::chrono::duration_cast<microseconds>(t1 - t0);
     this->strassen.push_back(ms);
 
-    std::cout << "Strassen -> k: " << i << " - " << ms.count() / r << " miliseconds" << std::endl;
+    std::cout << "Strassen -> k: " << i << " - " << ms.count() / r << " microseconds" << std::endl;
   }
 
   std::ofstream outFile("./output/output.csv");
@@ -89,15 +89,32 @@ void Runner::execute() {
 
 void Runner::test() {
     
-    Matrix *a = new Matrix(4, 4, this->min, this->max);
-    Matrix *b = new Matrix(4, 4, this->min, this->max);
+  Matrix a = Matrix(256, 256, this->min, this->max);
+  Matrix b = Matrix(256, 256, this->min, this->max);
 
-    a->print();
-    std::cout << std::endl;
+  // a.print();
+  // std::cout << std::endl;
 
-    b->print();
-    std::cout << std::endl;
+  // b.print();
+  // std::cout << std::endl;
 
-    Matrix result = a->multiply(b);
-    result.print();
+  std::chrono::steady_clock::time_point begin = std::chrono::steady_clock::now();
+  
+  Matrix r = a * b;
+  // r.print();
+  // std::cout << std::endl;
+
+  std::chrono::steady_clock::time_point end = std::chrono::steady_clock::now();  
+  std::cout << "Time difference = " << std::chrono::duration_cast<std::chrono::microseconds>(end - begin).count() << "[µs]" << std::endl;
+
+  begin = std::chrono::steady_clock::now();
+
+  Matrix r2 = Matrix::strassen(a, b);
+  
+  end = std::chrono::steady_clock::now();  
+  std::cout << "Time difference = " << std::chrono::duration_cast<std::chrono::microseconds>(end - begin).count() << "[µs]" << std::endl;
+
+  // r2.print();
+  // std::cout << std::endl;
+
 }

@@ -31,13 +31,19 @@ public:
   
   Matrix sub(Matrix* b);
   
-  static Matrix concatenate(Matrix* a, Matrix* b, Matrix* c, Matrix* d);
+  static Matrix concatenate(Matrix a, Matrix b, Matrix c, Matrix d);
   
-  static Matrix strassen(Matrix* a, Matrix* b);
+  static Matrix strassen(Matrix a, Matrix b);
   
   Matrix split(unsigned int x0, unsigned int xsize, unsigned int y0, unsigned int ysize);
   
   void print();
+
+  Matrix operator + (const Matrix & b);
+
+  Matrix operator - (const Matrix & b);
+
+  Matrix operator * (const Matrix & b);
   
 };
 
