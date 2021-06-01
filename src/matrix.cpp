@@ -127,9 +127,8 @@ Matrix Matrix::concatenate(Matrix a, Matrix b, Matrix c, Matrix d) {
 
 Matrix Matrix::strassen(Matrix m1, Matrix m2) {
     
-  if (m1.rows == 1 && m2.rows) {
-    Matrix result = Matrix(1, 1, 0);
-    result.arr[0][0] = m1.arr[0][0] * m2.arr[0][0];
+  if (m1.rows <= 32) {
+    Matrix result = m1 * m2;
     return result;
   }
   

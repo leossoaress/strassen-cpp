@@ -13,7 +13,7 @@ int main(int argc, const char * argv[]) {
   
   Runner *runner = new Runner(reader->kmax, reader->r, reader->min, reader->max);
   
-  runner->test();
+  runner->execute();
       
   return 0;
 }
