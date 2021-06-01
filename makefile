@@ -3,18 +3,13 @@ SDIR = src
 
 EXECUTABLE = $(BDIR)/application
 SOURCES = $(wildcard $(SDIR)/*.cpp)
-DEPENDENCIES = $(wildcard $(SDIR)/*.h) \
+DEPENDENCIES = $(wildcard $(SDIR)/*.hpp) \
 
 _OBJECTS = $(SOURCES:.cpp=.o)
 OBJECTS = $(patsubst $(SDIR)/%,$(BDIR)/%,$(_OBJECTS))
 
-CXXFLAGS += -I/usr/local/include \
-
-LDFLAGS = -L/usr/lib \
-		  -L/usr/local/lib \
-
 CXX = g++
-CXXFLAGS += -std=c++14 -Wall -Wno-reorder -fpermissive -fPIC
+CXXFLAGS += -std=c++14
 
 ifeq ($(DEBUG), 1)
 	CXXFLAGS += -O0 -g3

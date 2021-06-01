@@ -2,6 +2,3 @@
 
 /build/*
 !/build/.gitkeep
-
-/output/*
-!/output/.gitkeep
